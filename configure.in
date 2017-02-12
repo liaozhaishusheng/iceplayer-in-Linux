@@ -1,0 +1,38 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ([2.65])
+AC_INIT(iceplayer,4.0.5-20110520, jasy.ice@163.com)
+AC_CONFIG_SRCDIR([main.c])
+AC_CONFIG_HEADERS([config.h])
+AM_INIT_AUTOMAKE
+AC_CONFIG_MACRO_DIR(m4) 
+
+# Checks for programs.
+AC_PROG_CC
+AC_PROG_INSTALL
+
+# Checks for libraries.
+# FIXME: Replace `main' with a function in `-lX11':
+AC_CHECK_LIB(`pkg-config gtk+-2.0 --libs``pkg-config --libs gstreamer-0.10`  -lX11 -lnotify, `pkg-config gtk+-2.0 --libs``pkg-config --libs gstreamer-0.10`  -lX11 -lnotify)
+
+# Checks for header files.
+AC_PATH_X
+AC_CHECK_HEADERS(core.h keybinding.h update.h about.h  help.h mini.h  desktop_lrc.h list.h    widget_lrc.h common.h  id3.h  single.h download.h lrc.h configure.h instance.h ui.h equalizer.h )
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_C_INLINE
+AC_TYPE_SSIZE_T
+
+# Checks for library functions.
+AC_FUNC_MALLOC
+AC_CHECK_FUNCS()
+
+AC_CONFIG_FILES([Makefile
+                 data/Makefile
+                 data/skin/Makefile
+                 data/skin/blue_life_slax/Makefile
+                 data/skin/koukou_slax/Makefile
+                 data/skin/mac_slax/Makefile
+                 data/skin/new_style_slax/Makefile])
+AC_OUTPUT
